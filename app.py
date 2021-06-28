@@ -1,9 +1,14 @@
 import os
 import pymongo
+from flask import Flask
 if os.path.exists("env.py"):
     import env
 
 
-MONGO_URI = os.environ.get("MONGO_URI")
-DATABASE = "cookbookDB"
-COLLECTION = "recipes"
+app = Flask(__name__)
+
+
+if __name__ == "__main__":
+    app.run(host=os.environ.get("IP"),
+            port=int(os.environ.get("PORT")),
+            debug=False)
